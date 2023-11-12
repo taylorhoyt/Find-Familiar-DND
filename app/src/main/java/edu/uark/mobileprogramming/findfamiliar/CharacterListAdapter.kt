@@ -3,6 +3,7 @@ package edu.uark.mobileprogramming.findfamiliar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -40,7 +41,7 @@ class CharacterListAdapter(val characterClicked:(characters:Characters)->Unit): 
         companion object {
             fun create(parent: ViewGroup): CharacterViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.fragment_character_sheet, parent, false)
+                    .inflate(R.layout.character_list, parent, false)
                 return CharacterViewHolder(view)
             }
         }
