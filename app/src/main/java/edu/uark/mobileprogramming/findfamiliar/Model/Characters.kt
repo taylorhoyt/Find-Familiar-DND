@@ -5,11 +5,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 
-@Entity(tableName = "characters",
-    foreignKeys = [ForeignKey(entity = CharacterStats::class, parentColumns = ["character_stats"], childColumns = ["stats_id"])])
+@Entity(tableName = "characters_table",
+    foreignKeys = [ForeignKey(entity = CharacterStats::class, parentColumns = ["stats_id"], childColumns = ["character_stats"])])
 data class Characters(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "character_id") val characterId: Int,
+    @ColumnInfo(name = "character_id") val characterId: Int?,
     @ColumnInfo(name = "character_name") val name: String?,
     @ColumnInfo(name = "character_health") val health: Int?,
     @ColumnInfo(name = "character_armor")val armor: Int?,
@@ -20,10 +20,10 @@ data class Characters(
     @ColumnInfo(name = "character_stats")val statsId: Int?
 )
 
-@Entity(tableName = "character_stats")
+@Entity(tableName = "character_stats_table")
 data class CharacterStats(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "stats_id")val statsId: Int,
+    @ColumnInfo(name = "stats_id")val statsId: Int?,
     @ColumnInfo(name = "stats_strength")val strength: Int?,
     @ColumnInfo(name = "stats_constitution")val constitution: Int?,
     @ColumnInfo(name = "stats_wisdom")val wisdom: Int?,
@@ -32,23 +32,23 @@ data class CharacterStats(
     @ColumnInfo(name = "stats_intelligence")val intelligence: Int?
 )
 
-@Entity(tableName = "character_feats_extras",
+@Entity(tableName = "character_feats_extras_table",
     foreignKeys = [ForeignKey(entity = Characters::class, parentColumns = ["character_id"], childColumns = ["feats_character_id"])])
 data class CharacterFeatsExtras(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "feats_id")val featId: Int,
+    @ColumnInfo(name = "feats_id")val featId: Int?,
     @ColumnInfo(name = "feats_name")val featName: String?,
     @ColumnInfo(name = "feats_description")val featDescription: String?,
-    @ColumnInfo(name = "feats_character_id")val characterId: Int
+    @ColumnInfo(name = "feats_character_id")val characterId: Int?
 )
 
-@Entity(tableName = "character_weapons",
+@Entity(tableName = "character_weapons_table",
     foreignKeys = [ForeignKey(entity = Characters::class, parentColumns = ["character_id"], childColumns = ["weapons_character_id"])])
 data class CharacterWeapons(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "weapons_id")val weaponId: Int,
+    @ColumnInfo(name = "weapons_id")val weaponId: Int?,
     @ColumnInfo(name = "weapons_name")val weaponName: String?,
-    @ColumnInfo(name = "weapons_id")val weaponDescription: String?,
+    @ColumnInfo(name = "weapons_description")val weaponDescription: String?,
     @ColumnInfo(name = "weapons_damage")val weaponDamage: Int?,
     @ColumnInfo(name = "weapons_damage_modifier")val weaponDamageModifier: Int?,
     @ColumnInfo(name = "weapons_attack_modifier")val weaponAttackModifier: Int?,
