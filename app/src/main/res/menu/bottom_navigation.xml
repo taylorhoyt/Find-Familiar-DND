@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/person"
+        android:title="Person"
+        android:icon="@drawable/baseline_people_24"/>
+    <item
+        android:id="@+id/skills"
+        android:title="Skills"
+        android:icon="@drawable/baseline_local_fire_department_24"/>
+    <item
+        android:id="@+id/weapon"
+        android:title="Weapons"
+        android:icon="@drawable/baseline_construction_24"/>
+    <item
+        android:id="@+id/ability"
+        android:title="Abilities"
+        android:icon="@drawable/baseline_roundabout_left_24"/>
+    <item
+        android:id="@+id/savingthrow"
+        android:title="Saving Throws"
+        android:icon="@drawable/baseline_reply_all_24"/>
+</menu>
