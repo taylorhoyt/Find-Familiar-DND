@@ -51,7 +51,7 @@ class CharacterListAdapter(val characterClicked:(characters:Characters)->Unit): 
             return oldItem === newItem
         }
         override fun areContentsTheSame(oldItem: Characters, newItem: Characters): Boolean {
-            return oldItem.character == newItem.character
+            return oldItem.characterName == newItem.characterName
         }
     }
 }
