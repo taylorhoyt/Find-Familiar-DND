@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="NewCharacter.CharacterInfoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:id="@+id/identifierLayout"
+        android:layout_width="409dp"
+        android:layout_height="126dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/nameEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/classEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Class"
+            android:inputType="text"
+            android:text="Class" />
+
+        <EditText
+            android:id="@+id/levelEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Level"
+            android:inputType="text"
+            android:text="Level" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/healthLayout"
+        android:layout_width="411dp"
+        android:layout_height="111dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/identifierLayout">
+
+        <EditText
+            android:id="@+id/hpEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="HP"
+            android:inputType="text"
+            android:text="HP" />
+
+        <Button
+            android:id="@+id/addHealthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/subtractHealthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rollInfoLayout"
+        android:layout_width="411dp"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/healthLayout">
+
+        <EditText
+            android:id="@+id/armorClassEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="AC"
+            android:inputType="text"
+            android:text="AC" />
+
+        <TextView
+            android:id="@+id/profBonusView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prof. Bonus" />
+
+        <TextView
+            android:id="@+id/hitDiceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="HitDice" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/statLayout1"
+        android:layout_width="402dp"
+        android:layout_height="61dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rollInfoLayout">
+
+        <EditText
+            android:id="@+id/strengthView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Strength"
+            android:inputType="text"
+            android:text="Strength" />
+
+        <EditText
+            android:id="@+id/dexterityEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Dexterity"
+            android:inputType="text"
+            android:text="Dexterity" />
+
+        <EditText
+            android:id="@+id/constitutionEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Constitution"
+            android:inputType="text"
+            android:text="Constitution" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/statLayout2"
+        android:layout_width="406dp"
+        android:layout_height="74dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statLayout1"
+        tools:layout_constraintTop_toBottomOf="@id/statLayout1">
+
+        <EditText
+            android:id="@+id/intelligenceEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Intelligence"
+            android:inputType="text"
+            android:text="Intelligence" />
+
+        <EditText
+            android:id="@+id/wisdomEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Wisdom"
+            android:inputType="text"
+            android:text="Wisdom" />
+
+        <EditText
+            android:id="@+id/charismaEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Charisma"
+            android:inputType="text"
+            android:text="Charisma" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
