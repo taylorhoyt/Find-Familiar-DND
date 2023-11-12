@@ -8,7 +8,9 @@ import androidx.room.PrimaryKey
 @Entity
 data class Characters (
     @PrimaryKey(autoGenerate = true) val id: Int?,
+    @ColumnInfo(name = "character") val character: String?,
     @ColumnInfo(name = "character_name") val characterName: String?,
+    @ColumnInfo(name = "character_class") val characterClass: String?,
     @ColumnInfo(name = "character_health") val characterHealth: Int?,
     @ColumnInfo(name = "character_armor") val characterArmor: Int?,
     @ColumnInfo(name = "character_level") val characterLevel: Int?,

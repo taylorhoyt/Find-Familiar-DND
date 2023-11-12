@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Linear layout orientation vertical-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CharacterSheetFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Character Sheet Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+    <!--Linear layout orientation vertical-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/addCharBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetLeft="30dp"
+            android:insetTop="20dp"
+            android:insetRight="30dp"
+            android:text="Add Character" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/character_list" />
+
+    </LinearLayout>
+
+</LinearLayout>

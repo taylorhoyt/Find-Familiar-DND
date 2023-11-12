@@ -1,6 +1,8 @@
 package edu.uark.mobileprogramming.findfamiliar
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -30,22 +32,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, DiceRollerFragment()).commit()
-            navigationView.setCheckedItem(R.id.nav_home)
+            navigationView.setCheckedItem(R.id.nav_roller)
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_home -> supportFragmentManager.beginTransaction()
+            R.id.nav_roller -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, DiceRollerFragment()).commit()
             R.id.nav_sheet -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, CharacterSheetFragment()).commit()
+        }
+        if (item.itemId == R.id.nav_sheet) {
+            Log.d("Character Fragment", "Char Frag Clicked")
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {

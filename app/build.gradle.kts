@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "edu.uark.mobileprogramming.findfamiliar"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "edu.uark.mobileprogramming.findfamiliar"
@@ -42,11 +42,11 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
 
-    implementation("com.google.android.material:material:1.3.0-alpha03")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("com.google.android.material:material:1.11.0-beta01")
+    implementation("androidx.core:core-ktx:1.12.0")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation("androidx.activity:activity-ktx:1.8.0")
 
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
