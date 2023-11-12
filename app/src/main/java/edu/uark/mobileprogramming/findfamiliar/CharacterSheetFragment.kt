@@ -1,31 +1,37 @@
 package edu.uark.mobileprogramming.findfamiliar
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import edu.uark.mobileprogramming.findfamiliar.NewCharacter.NewCharacterActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private lateinit var recyclerView: RecyclerView
+private lateinit var adapter: CharacterListAdapter
+private lateinit var addCharBtn: Button
+//private val characterListViewModel: CharacterListViewModel by viewModels()
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CharacterSheetFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CharacterSheetFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    val startNewCharacterActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result: ActivityResult ->
+        if(result.resultCode == Activity.RESULT_OK){
+            Log.d("CharacterSheetFragment","Completed")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -33,26 +39,36 @@ class CharacterSheetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_sheet, container, false)
+        val view = inflater.inflate(R.layout.fragment_character_sheet, container, false)
+        addCharBtn = view.findViewById(R.id.addCharBtn)
+        addCharBtn.setOnClickListener {
+            val intent = Intent(requireContext(), NewCharacterActivity::class.java)
+            startNewCharacterActivity.launch(intent)
+        }
+
+//        recyclerView = view.findViewById(R.id.recyclerview)
+//        adapter = CharacterListAdapter {
+//            it.character?.let { it -> Log.d("Character Sheet Fragment", it) }
+//            val intent = Intent(this@CharacterSheetFragment, NewCharacterActivity::class.java)
+//            intent.putExtra("EXTRA_ID", it.id)
+//            startNewCharacterActivity.launch(intent)
+//        }
+//        recyclerView.adapter = adapter
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//
+//        characterListViewModel.allCharacters.observe(viewLifecycleOwner) { characters ->
+//            characters.let {
+//                adapter.submitList(it)
+//            }
+//        }
+        return view
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CharacterSheetFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             CharacterSheetFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
     }
