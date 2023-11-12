@@ -29,7 +29,7 @@ class CharactersRepository(private val charactersDao: CharactersDao,
     suspend fun update(character: Characters) = charactersDao.update(character)
 
     // CharacterStatsDao --------------------------------------------------------------------------
-    fun getStatsById(statsId: Int): CharacterStats = characterStatsDao.getStatsById(statsId)
+    fun loadAllStatsForCharacter(statsId: Int): CharacterStats = characterStatsDao.getStatsById(statsId)
 
     @WorkerThread
     suspend fun insert(characterStats: CharacterStats) = characterStatsDao.insert(characterStats)
