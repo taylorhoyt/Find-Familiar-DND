@@ -11,6 +11,7 @@ import android.widget.TextView
 import kotlin.random.Random
 import kotlin.random.nextUInt
 
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -38,6 +39,7 @@ class DiceRollerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_dice_roller, container, false)
 
         // Find the button by its ID

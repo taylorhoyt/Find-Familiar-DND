@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_roller"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Dice Roller"
+        />
+
+        <item
+            android:id="@+id/nav_sheet"
+            android:icon="@drawable/baseline_people_24"
+            android:title="Characters"
+        />
+    </group>
+
+</menu>
