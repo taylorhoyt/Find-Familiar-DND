@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import kotlin.random.Random
-import kotlin.random.nextUInt
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -47,7 +46,7 @@ class DiceRollerFragment : Fragment() {
         val NumDice: EditText = view.findViewById(R.id.NumDiceEdit)
         val ResultDisplay: TextView = view.findViewById(R.id.ResultView)
         val EquationDisplay: TextView = view.findViewById(R.id.EquationView)
-        val D4Button: Button = view.findViewById(R.id.D4button)
+        val D4Button: ImageButton = view.findViewById(R.id.D4button)
         D4Button.setOnClickListener {
             if(NumDice.text.toString()!="") {
             var arrayNum = emptyArray<Int>()
@@ -65,10 +64,10 @@ class DiceRollerFragment : Fragment() {
             }
 
                 EquationDisplay.text = "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = "Result: " + total.toString()
+                ResultDisplay.text = total.toString()
             }
         }
-        val D6Button: Button = view.findViewById(R.id.D6button)
+        val D6Button: ImageButton = view.findViewById(R.id.D6button)
         D6Button.setOnClickListener {
             if(NumDice.text.toString()!="") {
             var arrayNum = emptyArray<Int>()
@@ -85,10 +84,10 @@ class DiceRollerFragment : Fragment() {
                 }
                 EquationDisplay.text =
                     "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = "Result: " + total.toString()
+                ResultDisplay.text = total.toString()
             }
         }
-        val D8Button: Button = view.findViewById(R.id.D8button)
+        val D8Button: ImageButton = view.findViewById(R.id.D8button)
         D8Button.setOnClickListener {
             if(NumDice.text.toString()!="") {
             var arrayNum = emptyArray<Int>()
@@ -105,10 +104,10 @@ class DiceRollerFragment : Fragment() {
                 }
                 EquationDisplay.text =
                     "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = "Result: " + total.toString()
+                ResultDisplay.text = total.toString()
             }
         }
-        val D10Button: Button = view.findViewById(R.id.D10button)
+        val D10Button: ImageButton = view.findViewById(R.id.D10button)
         D10Button.setOnClickListener {
             if(NumDice.text.toString()!="") {
             var arrayNum = emptyArray<Int>()
@@ -125,10 +124,10 @@ class DiceRollerFragment : Fragment() {
                 }
                 EquationDisplay.text =
                     "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = "Result: " + total.toString()
+                ResultDisplay.text = total.toString()
             }
         }
-        val D12Button: Button = view.findViewById(R.id.D12button)
+        val D12Button: ImageButton = view.findViewById(R.id.D12button)
         D12Button.setOnClickListener {
             if(NumDice.text.toString()!="") {
             var arrayNum = emptyArray<Int>()
@@ -145,10 +144,10 @@ class DiceRollerFragment : Fragment() {
                 }
                 EquationDisplay.text =
                     "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = "Result: " + total.toString()
+                ResultDisplay.text = total.toString()
             }
         }
-        val D20Button: Button = view.findViewById(R.id.D20button)
+        val D20Button: ImageButton = view.findViewById(R.id.D20button)
         D20Button.setOnClickListener {
             if(NumDice.text.toString()!="") {
             var arrayNum = emptyArray<Int>()
@@ -165,7 +164,7 @@ class DiceRollerFragment : Fragment() {
                 }
                 EquationDisplay.text =
                     "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = "Result: " + total.toString()
+                ResultDisplay.text = total.toString()
             }
         }
 
