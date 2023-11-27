@@ -3,8 +3,6 @@ package edu.uark.mobileprogramming.findfamiliar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.util.Log
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -29,8 +27,8 @@ class CharacterListAdapter(val characterClicked:(characters:Characters)->Unit): 
 
     //Makes updates to the recycler view
     class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val charNameView: TextView = itemView.findViewById(R.id.charName)
-        private val charClassView: TextView = itemView.findViewById(R.id.charClass)
+        private val charNameView: TextView = itemView.findViewById(R.id.abilityName)
+        private val charClassView: TextView = itemView.findViewById(R.id.abilityDescription)
         private val charLevelView: TextView = itemView.findViewById(R.id.charLevel)
 
         fun bind(cName: String?, cClass:String?, cLevel:Int?) {

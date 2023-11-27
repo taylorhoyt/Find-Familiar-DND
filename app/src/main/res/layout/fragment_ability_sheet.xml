@@ -20,13 +20,23 @@
             android:insetLeft="30dp"
             android:insetTop="20dp"
             android:insetRight="30dp"
-            android:text="Add Character" />
+            android:text="Add Feat/Ability" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerviewCharacter"
+        <EditText
+            android:id="@+id/abilityNameEdit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/character_list" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/abilityDescriptionEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="text" />
 
     </LinearLayout>
 

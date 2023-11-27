@@ -12,11 +12,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.NewCharacter.NewCharacterActivity
 
@@ -56,13 +54,13 @@ class CharacterSheetFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_character_sheet, container, false)
         viewModel = ViewModelProvider(this, CharactersViewModelFactory(repository)).get(CharactersViewModel::class.java)
-        addCharBtn = view.findViewById(R.id.addCharBtn)
+        addCharBtn = view.findViewById(R.id.addAbilityBtn)
         addCharBtn.setOnClickListener {
             val intent = Intent(requireContext(), NewCharacterActivity::class.java)
             startNewCharacterActivity.launch(intent)
         }
 
-        recyclerView = view.findViewById(R.id.recyclerview)
+        recyclerView = view.findViewById(R.id.recyclerviewCharacter)
         adapter = CharacterListAdapter {
             it.name?.let { it -> Log.d("Character Sheet Fragment", it) }
             val intent = Intent(requireContext(), NewCharacterActivity::class.java)

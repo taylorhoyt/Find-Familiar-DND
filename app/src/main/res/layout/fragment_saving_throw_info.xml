@@ -1,15 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="NewCharacter.SavingThrowInfoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    tools:context="NewCharacter.SkillsInfoFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="609dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!--LinearLayout orientation Vertical -->
+
+                <LinearLayout
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <!--TextView for displaying Name -->
+
+                        <TextView
+                            android:id="@+id/strengthName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Strength" />
+
+                        <RadioButton
+                            android:id="@+id/proficiencyStrength"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Proficient" />
+
+                        <!--TextView for displaying Email -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/rollButtonStrength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Roll" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!--LinearLayout orientation Vertical -->
+
+                <LinearLayout
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <!--TextView for displaying Name -->
+
+                        <TextView
+                            android:id="@+id/dexterityName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Dexterity" />
+
+                        <RadioButton
+                            android:id="@+id/proficiencyDexterity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Proficient" />
+
+                        <!--TextView for displaying Email -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/rollButtonDexterity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Roll" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!--LinearLayout orientation Vertical -->
+
+                <LinearLayout
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <!--TextView for displaying Name -->
+
+                        <TextView
+                            android:id="@+id/constitutionName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Constitution" />
+
+                        <RadioButton
+                            android:id="@+id/proficiencyConstitution"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Proficient" />
+
+                        <!--TextView for displaying Email -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/rollButtonConstitution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Roll" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!--LinearLayout orientation Vertical -->
+
+                <LinearLayout
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <!--TextView for displaying Name -->
+
+                        <TextView
+                            android:id="@+id/intelligenceName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Intelligence" />
+
+                        <RadioButton
+                            android:id="@+id/proficiencyIntelligence"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Proficient" />
+
+                        <!--TextView for displaying Email -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/rollButtonIntelligence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Roll" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!--LinearLayout orientation Vertical -->
+
+                <LinearLayout
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <!--TextView for displaying Name -->
+
+                        <TextView
+                            android:id="@+id/wisdomName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Wisdom" />
+
+                        <RadioButton
+                            android:id="@+id/proficiencyWisdom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Proficient" />
+
+                        <!--TextView for displaying Email -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/rollButtonWisdom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Roll" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!--LinearLayout orientation Vertical -->
+
+                <LinearLayout
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <!--TextView for displaying Name -->
+
+                        <TextView
+                            android:id="@+id/charismaName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Charisma" />
+
+                        <RadioButton
+                            android:id="@+id/proficiencyCharisma"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Proficient" />
+
+                        <!--TextView for displaying Email -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/rollButtonCharisma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Roll" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Saving Throw Info Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
-</RelativeLayout>
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:text="Result"
+        android:textAlignment="center" />
+
+</LinearLayout>

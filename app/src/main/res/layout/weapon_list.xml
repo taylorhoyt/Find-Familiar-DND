@@ -54,18 +54,17 @@
                     android:layout_weight="1"
                     android:textColor="#454545"
                     android:textSize="16sp"
-                    tools:text="Class" />
+                    tools:text="Dice" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/charLevel"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/rollButtonAcrobatics"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                tools:text="Level" />
+                android:layout_weight="1"
+                android:text="Roll" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

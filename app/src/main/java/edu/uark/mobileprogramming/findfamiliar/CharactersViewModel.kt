@@ -1,4 +1,4 @@
-package edu.uark.mobileprogramming.findfamiliar
+    package edu.uark.mobileprogramming.findfamiliar
 
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import androidx.lifecycle.LiveData

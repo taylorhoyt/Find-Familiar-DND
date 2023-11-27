@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Linear layout orientation vertical-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="NewCharacter.AbilityInfoFragment">
+    android:orientation="vertical"
+    tools:context=".CharacterSheetFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AbilityInfoFragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
-</RelativeLayout>
+    <!--Linear layout orientation vertical-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/addAbilBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetLeft="30dp"
+            android:insetTop="20dp"
+            android:insetRight="30dp"
+            android:text="Add Feat/Ability" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewAbility"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/ability_list" />
+
+    </LinearLayout>
+
+</LinearLayout>

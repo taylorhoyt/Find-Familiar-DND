@@ -54,18 +54,10 @@
                     android:layout_weight="1"
                     android:textColor="#454545"
                     android:textSize="16sp"
-                    tools:text="Class" />
+                    tools:text="Description" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/charLevel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                tools:text="Level" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
