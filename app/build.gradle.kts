@@ -68,6 +68,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.6.2")
 
+    implementation("androidx.fragment:fragment-ktx:1.3.0")
+
     // Kotlin components
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")

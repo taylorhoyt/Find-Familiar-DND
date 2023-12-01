@@ -1,6 +1,5 @@
 package edu.uark.mobileprogramming.findfamiliar.NewCharacter
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.activity.viewModels
@@ -32,7 +31,7 @@ class NewCharacterActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.person -> replaceFragment(CharacterInfoFragment())
-                R.id.weapon -> replaceFragment(WeaponInfoFragment())
+                R.id.weapon -> replaceFragment(WeaponSheetFragment())
                 R.id.skills -> replaceFragment(SkillsInfoFragment())
                 R.id.ability -> replaceFragment(AbilityInfoFragment())
                 R.id.savingthrow -> replaceFragment(SavingThrowInfoFragment())

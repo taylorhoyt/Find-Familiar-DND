@@ -15,6 +15,9 @@ interface CharactersDao {
     @Query("SELECT * FROM characters_table")
     fun getCharacters(): Flow<List<Characters>>
 
+    @Query("SELECT * FROM character_weapons_table")
+    fun getCharacterWeapons(): Flow<List<CharacterWeapons>>
+
     @Query("SELECT * FROM characters_table WHERE character_id IN (:characterIds)")
     fun loadAllByIds(characterIds: IntArray): List<Characters>
 
@@ -25,6 +28,9 @@ interface CharactersDao {
     // insert a single character
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(character: Characters)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(weapons: CharacterWeapons)
 
     @Delete
     suspend fun delete(character: Characters)

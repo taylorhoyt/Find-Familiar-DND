@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/addAbilityBtn"
+            android:id="@+id/addWeaponBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:insetLeft="30dp"
@@ -22,50 +22,11 @@
             android:insetRight="30dp"
             android:text="Add Weapon" />
 
-        <EditText
-            android:id="@+id/abilityNameEdit"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewWeapon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/abilityDescriptionEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Description"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/damageDieEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Damage Die"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/numDiceEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="# of dice"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/weaponQualityEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Weapon Quality"
-            android:inputType="number" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/weapon_list" />
 
     </LinearLayout>
 

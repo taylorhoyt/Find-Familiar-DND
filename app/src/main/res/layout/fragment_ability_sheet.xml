@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/addAbilityBtn"
+            android:id="@+id/addAbilBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:insetLeft="30dp"
@@ -22,21 +22,11 @@
             android:insetRight="30dp"
             android:text="Add Feat/Ability" />
 
-        <EditText
-            android:id="@+id/abilityNameEdit"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewAbility"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/abilityDescriptionEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Description"
-            android:inputType="text" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/ability_list" />
 
     </LinearLayout>
 

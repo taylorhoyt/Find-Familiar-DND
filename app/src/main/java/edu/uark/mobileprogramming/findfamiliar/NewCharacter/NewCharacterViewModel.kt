@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import edu.uark.mobileprogramming.findfamiliar.Model.CharacterWeapons
 import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import kotlinx.coroutines.coroutineScope
@@ -11,6 +12,8 @@ import kotlinx.coroutines.coroutineScope
 class NewCharacterViewModel(private val repository: CharactersRepository, private val id:Int): ViewModel() {
 
     var curTask: LiveData<Characters> = repository.getCharacter(id).asLiveData()
+
+    val allCharacterWeapons: LiveData<List<CharacterWeapons>> = repository.getCharacterWeapons().asLiveData()
 
     fun updateId(id:Int){
         curTask = repository.getCharacter(id).asLiveData()
@@ -22,6 +25,12 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
     suspend fun insert(character: Characters){
         coroutineScope {
             repository.insert(character)
+        }
+    }
+
+    suspend fun insertWeapon(weapon: CharacterWeapons){
+        coroutineScope {
+            repository.insert(weapon)
         }
     }
 

@@ -1,34 +1,37 @@
-package edu.uark.mobileprogramming.findfamiliar
+package edu.uark.mobileprogramming.findfamiliar.NewCharacter
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.uark.mobileprogramming.findfamiliar.CharactersViewModelFactory
+import edu.uark.mobileprogramming.findfamiliar.FindFamiliarApplication
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
-import edu.uark.mobileprogramming.findfamiliar.NewCharacter.NewCharacterActivity
+import edu.uark.mobileprogramming.findfamiliar.R
+import edu.uark.mobileprogramming.findfamiliar.WeaponListAdapter
 
-class CharacterSheetFragment : Fragment() {
+class WeaponSheetFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: CharacterListAdapter
-    private lateinit var addCharBtn: Button
-    private lateinit var viewModel: CharactersViewModel
+    private lateinit var adapter: WeaponListAdapter
+    private lateinit var addBtn: Button
+    private lateinit var viewModel: NewCharacterViewModel
     private lateinit var repository: CharactersRepository
 
-    val startNewCharacterActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    val startWeaponActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
         if(result.resultCode == Activity.RESULT_OK){
-            Log.d("CharacterSheetFragment","Completed")
+            Log.d("WeaponSheetFragment","Completed")
         }
     }
 
@@ -52,26 +55,28 @@ class CharacterSheetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_character_sheet, container, false)
-        viewModel = ViewModelProvider(this, CharactersViewModelFactory(repository)).get(CharactersViewModel::class.java)
-        addCharBtn = view.findViewById(R.id.addWeaponBtn)
-        addCharBtn.setOnClickListener {
-            val intent = Intent(requireContext(), NewCharacterActivity::class.java)
-            startNewCharacterActivity.launch(intent)
+        val view = inflater.inflate(R.layout.fragment_weapon_sheet, container, false)
+        viewModel = ViewModelProvider(this, NewCharacterViewModelFactory(repository, -1)).get(
+            NewCharacterViewModel::class.java)
+        addBtn = view.findViewById(R.id.addWeaponBtn)
+        addBtn.setOnClickListener {
+            val intent = Intent(requireContext(), WeaponActivity::class.java)
+            startWeaponActivity.launch(intent)
         }
 
-        recyclerView = view.findViewById(R.id.recyclerviewCharacter)
-        adapter = CharacterListAdapter {
-            it.name?.let { it -> Log.d("Character Sheet Fragment", it) }
-            val intent = Intent(requireContext(), NewCharacterActivity::class.java)
-            intent.putExtra("EXTRA_ID", it.characterId)
-            startNewCharacterActivity.launch(intent)
+        recyclerView = view.findViewById(R.id.recyclerviewWeapon)
+        adapter = WeaponListAdapter {
+            it.weaponName?.let { it -> Log.d("Weapon Sheet Fragment", it) }
+            val intent = Intent(requireContext(), WeaponActivity::class.java)
+            //TODO: This may need to be characterId
+            intent.putExtra("EXTRA_ID", it.weaponId)
+            startWeaponActivity.launch(intent)
         }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.allCharacters.observe(viewLifecycleOwner) { characters ->
-            characters.let {
+        viewModel.allCharacterWeapons.observe(viewLifecycleOwner) { characterWeapons ->
+            characterWeapons.let {
                 adapter.submitList(it)
             }
         }
@@ -81,7 +86,7 @@ class CharacterSheetFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            CharacterSheetFragment().apply {
+            WeaponSheetFragment().apply {
                 arguments = Bundle().apply {
                 }
             }

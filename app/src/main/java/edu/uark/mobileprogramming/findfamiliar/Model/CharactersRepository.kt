@@ -12,12 +12,17 @@ class CharactersRepository(private val charactersDao: CharactersDao,
     // CharactersDao ------------------------------------------------------------------------------
     fun getCharacters(): Flow<List<Characters>> = charactersDao.getCharacters()
 
+    fun getCharacterWeapons(): Flow<List<CharacterWeapons>> = charactersDao.getCharacterWeapons()
+
     fun loadAllByIds(characterIds: IntArray): List<Characters> = charactersDao.loadAllByIds(characterIds)
 
     fun getCharacter(id: Int): Flow<Characters> = charactersDao.getCharacter(id)
 
     @WorkerThread
     suspend fun insert(character: Characters) = charactersDao.insert(character)
+
+    @WorkerThread
+    suspend fun insertWeapon(weapons: CharacterWeapons) = charactersDao.insert(weapons)
 
     @WorkerThread
     suspend fun delete(character: Characters) = charactersDao.delete(character)
