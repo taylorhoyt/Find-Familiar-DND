@@ -28,6 +28,9 @@
         <activity
             android:name=".NewCharacter.WeaponActivity"
             android:exported="false" />
+        <activity
+            android:name=".NewCharacter.AbilityActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

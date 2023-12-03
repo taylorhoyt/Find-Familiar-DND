@@ -11,10 +11,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="75dp">
 
         <Button
-            android:id="@+id/addWeaponBtn"
+            android:id="@+id/addAbilityBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:insetLeft="30dp"

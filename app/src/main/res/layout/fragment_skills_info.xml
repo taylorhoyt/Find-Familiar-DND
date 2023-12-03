@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="609dp">
+        android:layout_height="609dp"
+        android:paddingTop="75dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,15 +19,15 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -47,9 +48,9 @@
                             android:id="@+id/abilityName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Acrobatics"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Acrobatics" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyAcrobatics"
@@ -73,15 +74,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -102,9 +103,9 @@
                             android:id="@+id/animalHandlingName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Animal Handling"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Animal Handling" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyAnimalHandling"
@@ -128,15 +129,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -157,9 +158,9 @@
                             android:id="@+id/arcanaName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Arcana"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Arcana" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyArcana"
@@ -183,15 +184,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -212,9 +213,9 @@
                             android:id="@+id/athleticsName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Athletics"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Athletics" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyAthletics"
@@ -238,15 +239,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -267,9 +268,9 @@
                             android:id="@+id/deceptionName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Deception"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Deception" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyDeception"
@@ -293,15 +294,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -322,9 +323,9 @@
                             android:id="@+id/historyName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="History"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="History" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyHistory"
@@ -348,15 +349,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -377,9 +378,9 @@
                             android:id="@+id/insightName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Insight"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Insight" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyInsight"
@@ -403,15 +404,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -432,9 +433,9 @@
                             android:id="@+id/intimidationName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Intimidation"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Intimidation" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyIntimidation"
@@ -458,15 +459,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -487,9 +488,9 @@
                             android:id="@+id/investigationName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Investigation"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Investigation" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyInvestigation"
@@ -513,15 +514,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -542,9 +543,9 @@
                             android:id="@+id/medicineName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Medicine"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Medicine" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyMedicine"
@@ -568,15 +569,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -597,9 +598,9 @@
                             android:id="@+id/natureName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Nature"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Nature" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyNature"
@@ -623,15 +624,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -652,9 +653,9 @@
                             android:id="@+id/perceptionName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Perception"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Perception" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyPerception"
@@ -678,15 +679,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -707,9 +708,9 @@
                             android:id="@+id/performanceName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Performance"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Performance" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyPerformance"
@@ -733,15 +734,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -762,9 +763,9 @@
                             android:id="@+id/persuasionName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Persuasion"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Persuasion" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyPersuasion"
@@ -788,15 +789,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -817,9 +818,9 @@
                             android:id="@+id/religionName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Religion"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Religion" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyReligion"
@@ -843,15 +844,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -872,9 +873,9 @@
                             android:id="@+id/sleightOfHandName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Sleight of Hand"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Sleight of Hand" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencySleightOfHand"
@@ -898,15 +899,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -927,9 +928,9 @@
                             android:id="@+id/stealthName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Stealth"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Stealth" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencyStealth"
@@ -953,15 +954,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <!--LinearLayout orientation Vertical -->
 
@@ -982,9 +983,9 @@
                             android:id="@+id/survivalName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Survival"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:text="Survival" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/proficiencySurvival"
