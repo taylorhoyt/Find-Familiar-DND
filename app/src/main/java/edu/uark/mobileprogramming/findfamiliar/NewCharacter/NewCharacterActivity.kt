@@ -1,13 +1,13 @@
 package edu.uark.mobileprogramming.findfamiliar.NewCharacter
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import edu.uark.mobileprogramming.findfamiliar.R
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uark.mobileprogramming.findfamiliar.FindFamiliarApplication
 import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import kotlinx.coroutines.CoroutineScope
@@ -33,7 +33,7 @@ class NewCharacterActivity : AppCompatActivity() {
                 R.id.person -> replaceFragment(CharacterInfoFragment())
                 R.id.weapon -> replaceFragment(WeaponSheetFragment())
                 R.id.skills -> replaceFragment(SkillsInfoFragment())
-                R.id.ability -> replaceFragment(AbilityInfoFragment())
+                R.id.ability -> replaceFragment(AbilitySheetFragment())
                 R.id.savingthrow -> replaceFragment(SavingThrowInfoFragment())
             }
             true
@@ -44,7 +44,7 @@ class NewCharacterActivity : AppCompatActivity() {
             replaceFragment(CharacterInfoFragment())
         }
 
-        val fab = findViewById<FloatingActionButton>(R.id.homeBtn)
+        val fab = findViewById<Button>(R.id.homeBtn)
         fab.setOnClickListener {
             CoroutineScope(SupervisorJob()).launch {
                 newCharacterViewModel.insert(Characters(null, "Name", 1, 1, "Class", 10, 1, "X", null))

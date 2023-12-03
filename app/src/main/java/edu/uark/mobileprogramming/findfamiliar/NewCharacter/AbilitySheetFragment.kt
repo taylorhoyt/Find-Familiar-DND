@@ -15,22 +15,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.uark.mobileprogramming.findfamiliar.AbilityListAdapter
 import edu.uark.mobileprogramming.findfamiliar.FindFamiliarApplication
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.R
-import edu.uark.mobileprogramming.findfamiliar.WeaponListAdapter
 
-class WeaponSheetFragment : Fragment() {
+class AbilitySheetFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: WeaponListAdapter
+    private lateinit var adapter: AbilityListAdapter
     private lateinit var addBtn: Button
     private lateinit var viewModel: NewCharacterViewModel
     private lateinit var repository: CharactersRepository
 
-    val startWeaponActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    val startAbilityActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
         if(result.resultCode == Activity.RESULT_OK){
-            Log.d("WeaponSheetFragment","Completed")
+            Log.d("AbilitySheetFragment","Completed")
         }
     }
 
@@ -54,28 +54,28 @@ class WeaponSheetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_weapon_sheet, container, false)
+        val view = inflater.inflate(R.layout.fragment_ability_sheet, container, false)
         viewModel = ViewModelProvider(this, NewCharacterViewModelFactory(repository, -1)).get(
             NewCharacterViewModel::class.java)
-        addBtn = view.findViewById(R.id.addAbilityBtn)
+        addBtn = view.findViewById(R.id.addAbilBtn)
         addBtn.setOnClickListener {
-            val intent = Intent(requireContext(), WeaponActivity::class.java)
-            startWeaponActivity.launch(intent)
+            val intent = Intent(requireContext(), AbilityActivity::class.java)
+            startAbilityActivity.launch(intent)
         }
 
-        recyclerView = view.findViewById(R.id.recyclerviewWeapon)
-        adapter = WeaponListAdapter {
-            it.weaponName?.let { it -> Log.d("Weapon Sheet Fragment", it) }
-            val intent = Intent(requireContext(), WeaponActivity::class.java)
+        recyclerView = view.findViewById(R.id.recyclerviewAbility)
+        adapter = AbilityListAdapter {
+            it.featName?.let { it -> Log.d("Ability Sheet Fragment", it) }
+            val intent = Intent(requireContext(), AbilityActivity::class.java)
             //TODO: This may need to be characterId
-            intent.putExtra("EXTRA_ID", it.weaponId)
-            startWeaponActivity.launch(intent)
+            intent.putExtra("EXTRA_ID", it.featId)
+            startAbilityActivity.launch(intent)
         }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.allCharacterWeapons.observe(viewLifecycleOwner) { characterWeapons ->
-            characterWeapons.let {
+        viewModel.allCharacterFeats.observe(viewLifecycleOwner) { characterAbilites ->
+            characterAbilites.let {
                 adapter.submitList(it)
             }
         }
@@ -85,7 +85,7 @@ class WeaponSheetFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            WeaponSheetFragment().apply {
+            AbilitySheetFragment().apply {
                 arguments = Bundle().apply {
                 }
             }

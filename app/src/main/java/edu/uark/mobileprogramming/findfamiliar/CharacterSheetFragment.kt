@@ -54,7 +54,7 @@ class CharacterSheetFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_character_sheet, container, false)
         viewModel = ViewModelProvider(this, CharactersViewModelFactory(repository)).get(CharactersViewModel::class.java)
-        addCharBtn = view.findViewById(R.id.addWeaponBtn)
+        addCharBtn = view.findViewById(R.id.addAbilityBtn)
         addCharBtn.setOnClickListener {
             val intent = Intent(requireContext(), NewCharacterActivity::class.java)
             startNewCharacterActivity.launch(intent)

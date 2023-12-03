@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/addWeaponBtn"
+            android:id="@+id/addAbilityBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:insetLeft="30dp"

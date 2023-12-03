@@ -14,6 +14,8 @@ class CharactersRepository(private val charactersDao: CharactersDao,
 
     fun getCharacterWeapons(): Flow<List<CharacterWeapons>> = charactersDao.getCharacterWeapons()
 
+    fun getCharacterFeats(): Flow<List<CharacterFeatsExtras>> = charactersDao.getCharacterFeats()
+
     fun loadAllByIds(characterIds: IntArray): List<Characters> = charactersDao.loadAllByIds(characterIds)
 
     fun getCharacter(id: Int): Flow<Characters> = charactersDao.getCharacter(id)

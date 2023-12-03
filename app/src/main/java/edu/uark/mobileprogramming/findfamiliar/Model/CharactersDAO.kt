@@ -18,6 +18,9 @@ interface CharactersDao {
     @Query("SELECT * FROM character_weapons_table")
     fun getCharacterWeapons(): Flow<List<CharacterWeapons>>
 
+    @Query("SELECT * FROM character_feats_extras_table")
+    fun getCharacterFeats(): Flow<List<CharacterFeatsExtras>>
+
     @Query("SELECT * FROM characters_table WHERE character_id IN (:characterIds)")
     fun loadAllByIds(characterIds: IntArray): List<Characters>
 
