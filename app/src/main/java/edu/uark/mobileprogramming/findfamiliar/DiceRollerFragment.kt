@@ -1,13 +1,19 @@
 package edu.uark.mobileprogramming.findfamiliar
 
+import android.graphics.Color
+import android.graphics.ColorFilter
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Im
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import org.w3c.dom.Text
 import kotlin.random.Random
 
 
@@ -22,15 +28,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class DiceRollerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var selectedButton: ImageButton? = null
+    private var rollNum: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -40,135 +43,69 @@ class DiceRollerFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_dice_roller, container, false)
-
-        // Find the button by its ID
+        val darkBlue = context?.let { ContextCompat.getColor(it, R.color.dark_blue) }
+        val blue = context?.let { ContextCompat.getColor(it, R.color.blue) }
         val modifier: EditText = view.findViewById(R.id.ModifierEdit)
-        val NumDice: EditText = view.findViewById(R.id.NumDiceEdit)
-        val ResultDisplay: TextView = view.findViewById(R.id.ResultView)
-        val EquationDisplay: TextView = view.findViewById(R.id.EquationView)
-        val D4Button: ImageButton = view.findViewById(R.id.D4button)
-        D4Button.setOnClickListener {
-            if(NumDice.text.toString()!="") {
-            var arrayNum = emptyArray<Int>()
-            var total = 0
-            if(modifier.text.toString()!="")
-            {
-                total = modifier.text.toString().toInt()
-            }
-            else{modifier.setText("0")}
-            for(i in 1..NumDice.text.toString().toInt())
-            {
-                val temp = Random.nextInt(1, 4)
-                arrayNum+=temp
-                total+=temp
-            }
+        val numDice: EditText = view.findViewById(R.id.NumDiceEdit)
+        val resultDisplay: TextView = view.findViewById(R.id.ResultView)
+        val equationDisplay: TextView = view.findViewById(R.id.EquationView)
 
-                EquationDisplay.text = "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = total.toString()
-            }
-        }
+        val D4Button: ImageButton = view.findViewById(R.id.D4button)
         val D6Button: ImageButton = view.findViewById(R.id.D6button)
-        D6Button.setOnClickListener {
-            if(NumDice.text.toString()!="") {
-            var arrayNum = emptyArray<Int>()
-            var total = 0
-            if(modifier.text.toString()!="")
-            {
-                total = modifier.text.toString().toInt()
-            }
-            else{modifier.setText("0")}
-                for (i in 1..NumDice.text.toString().toInt()) {
-                    val temp = Random.nextInt(1, 6)
-                    arrayNum += temp
-                    total += temp
-                }
-                EquationDisplay.text =
-                    "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = total.toString()
-            }
-        }
         val D8Button: ImageButton = view.findViewById(R.id.D8button)
-        D8Button.setOnClickListener {
-            if(NumDice.text.toString()!="") {
-            var arrayNum = emptyArray<Int>()
-            var total = 0
-            if(modifier.text.toString()!="")
-            {
-                total = modifier.text.toString().toInt()
-            }
-            else{modifier.setText("0")}
-                for (i in 1..NumDice.text.toString().toInt()) {
-                    val temp = Random.nextInt(1, 8)
-                    arrayNum += temp
-                    total += temp
-                }
-                EquationDisplay.text =
-                    "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = total.toString()
-            }
-        }
         val D10Button: ImageButton = view.findViewById(R.id.D10button)
-        D10Button.setOnClickListener {
-            if(NumDice.text.toString()!="") {
-            var arrayNum = emptyArray<Int>()
-            var total = 0
-            if(modifier.text.toString()!="")
-            {
-                total = modifier.text.toString().toInt()
-            }
-            else{modifier.setText("0")}
-                for (i in 1..NumDice.text.toString().toInt()) {
-                    val temp = Random.nextInt(1, 10)
-                    arrayNum += temp
-                    total += temp
-                }
-                EquationDisplay.text =
-                    "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = total.toString()
-            }
-        }
         val D12Button: ImageButton = view.findViewById(R.id.D12button)
-        D12Button.setOnClickListener {
-            if(NumDice.text.toString()!="") {
-            var arrayNum = emptyArray<Int>()
-            var total = 0
-            if(modifier.text.toString()!="")
-            {
-                total = modifier.text.toString().toInt()
-            }
-            else{modifier.setText("0")}
-                for (i in 1..NumDice.text.toString().toInt()) {
-                    val temp = Random.nextInt(1, 12)
-                    arrayNum += temp
-                    total += temp
-                }
-                EquationDisplay.text =
-                    "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = total.toString()
-            }
-        }
         val D20Button: ImageButton = view.findViewById(R.id.D20button)
-        D20Button.setOnClickListener {
-            if(NumDice.text.toString()!="") {
-            var arrayNum = emptyArray<Int>()
-            var total = 0
-            if(modifier.text.toString()!="")
-            {
-                total = modifier.text.toString().toInt()
-            }
-            else{modifier.setText("0")}
-                for (i in 1..NumDice.text.toString().toInt()) {
-                    val temp = Random.nextInt(1, 20)
-                    arrayNum += temp
-                    total += temp
-                }
-                EquationDisplay.text =
-                    "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
-                ResultDisplay.text = total.toString()
-            }
+
+        if (darkBlue != null && blue != null) {
+            D4Button.setOnClickListener { handleButtonClick(D4Button, darkBlue, blue, 4) }
+            D6Button.setOnClickListener { handleButtonClick(D6Button, darkBlue, blue, 6) }
+            D8Button.setOnClickListener { handleButtonClick(D8Button, darkBlue, blue, 8) }
+            D10Button.setOnClickListener { handleButtonClick(D10Button, darkBlue, blue, 10) }
+            D12Button.setOnClickListener { handleButtonClick(D12Button, darkBlue, blue, 12) }
+            D20Button.setOnClickListener { handleButtonClick(D20Button, darkBlue, blue, 20) }
+        }
+
+        val rollButton: Button = view.findViewById(R.id.button)
+        rollButton.setOnClickListener {
+            rollNum?.let { it1 -> onRoll(it1, numDice, modifier, equationDisplay, resultDisplay) }
         }
 
         return view
+    }
+
+    private fun handleButtonClick(button: ImageButton, darkBlue: Int, blue: Int, newRollNum: Int) {
+        selectedButton?.setColorFilter(blue)
+
+        button.setColorFilter(darkBlue)
+        selectedButton = button
+
+        // Set the roll number based on the clicked button
+        rollNum = newRollNum
+    }
+
+    private fun onRoll(rollNum: Int, numDice: TextView, modifier: TextView, equationDisplay: TextView, resultDisplay: TextView) {
+        val numDiceValue = if (numDice.text.toString().isNotEmpty()) {
+            numDice.text.toString().toInt()
+        } else {
+            numDice.setText("1")
+            1
+        }
+            var arrayNum = emptyArray<Int>()
+            var total = 0
+            if (modifier.text.toString() != "") {
+                total = modifier.text.toString().toInt()
+            } else {
+                modifier.setText("0")
+            }
+            for (i in 1..numDiceValue) {
+                val temp = Random.nextInt(1, rollNum)
+                arrayNum += temp
+                total += temp
+            }
+            equationDisplay.text =
+                "Equation: " + arrayNum.joinToString() + " + " + modifier.text.toString()
+            resultDisplay.text = total.toString()
     }
 
     companion object {
@@ -189,5 +126,5 @@ class DiceRollerFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
-    }
+        }
 }
