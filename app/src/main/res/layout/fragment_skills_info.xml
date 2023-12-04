@@ -1029,7 +1029,7 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/resultView"
         android:layout_width="match_parent"
         android:layout_height="124dp"
         android:text="Result"
