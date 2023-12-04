@@ -27,23 +27,19 @@
             android:id="@+id/nameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:ems="10"
             android:hint="Name"
-            android:inputType="text"
-            android:text="Name"
-            android:layout_margin="10dp"
-            />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/classEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:ems="10"
             android:hint="Class"
-            android:inputType="text"
-            android:text="Class"
-            android:layout_margin="10dp"
-            />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/levelEdit"
@@ -52,8 +48,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Level"
-            android:inputType="text"
-            android:text="Level" />
+            android:inputType="number" />
 
         <LinearLayout
             android:id="@+id/healthLayout"
@@ -69,8 +64,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="HP"
-                android:inputType="text"
-                android:text="HP" />
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/addHealthButton"
@@ -112,8 +106,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="AC"
-                android:inputType="text"
-                android:text="AC" />
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/profBonusView"
@@ -156,15 +149,14 @@
                         TODO WILL COME BACK TO THIS. AND IF YOU READ THIS WHOLE ESSAY, YOURE A G.
                         TODO ANYWAYS I MUST RETURN TO KOTLIN HELL, MY DAYS IN XML ARE NUMBERED...
                     -->
-                    
+
                     <EditText
                         android:id="@+id/strengthView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Strength"
-                        android:inputType="text"
-                        android:text="Strength" />
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -180,8 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Dexterity"
-                        android:inputType="text"
-                        android:text="Dexterity" />
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -197,8 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Constitution"
-                        android:inputType="text"
-                        android:text="Constitution" />
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -223,8 +213,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Intelligence"
-                        android:inputType="text"
-                        android:text="Intelligence" />
+                        android:inputType="number" />
 
                     </LinearLayout>
 
@@ -240,8 +229,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="Wisdom"
-                            android:inputType="text"
-                            android:text="Wisdom" />
+                            android:inputType="number" />
 
                     </LinearLayout>
 
@@ -257,8 +245,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="Charisma"
-                            android:inputType="text"
-                            android:text="Charisma" />
+                            android:inputType="number" />
 
                     </LinearLayout>
 
