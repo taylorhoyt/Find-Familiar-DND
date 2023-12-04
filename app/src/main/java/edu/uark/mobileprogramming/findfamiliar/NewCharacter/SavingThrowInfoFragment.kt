@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import edu.uark.mobileprogramming.findfamiliar.R
 import kotlin.random.Random
@@ -45,6 +46,7 @@ class SavingThrowInfoFragment : Fragment() {
         val intelligence:Int = 4
         val charisma: Int = -1
         val constitution: Int = 7
+        val proficiencyBonus:Int = 3
         val resultDisplay: TextView = view.findViewById(R.id.resultView)
         val StrengthButton: Button = view.findViewById(R.id.rollButtonStrength)
         val DexterityButton: Button = view.findViewById(R.id.rollButtonDexterity)
@@ -53,18 +55,27 @@ class SavingThrowInfoFragment : Fragment() {
         val WisdomButton: Button = view.findViewById(R.id.rollButtonWisdom)
         val CharismaButton: Button = view.findViewById(R.id.rollButtonCharisma)
 
-        StrengthButton.setOnClickListener { handleButtonClick(strength, resultDisplay) }
-        DexterityButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay) }
-        ConstitutionButton.setOnClickListener { handleButtonClick(constitution, resultDisplay) }
-        IntelligenceButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        WisdomButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay) }
-        CharismaButton.setOnClickListener { handleButtonClick(charisma, resultDisplay) }
+        val StrengthProficiency: Switch = view.findViewById(R.id.proficiencyStrength)
+        val DexterityProficiency: Switch = view.findViewById(R.id.proficiencyDexterity)
+        val ConstitutionProficiency: Switch = view.findViewById(R.id.proficiencyConstitution)
+        val IntelligenceProficiency: Switch = view.findViewById(R.id.proficiencyIntelligence)
+        val WisdomProficiency: Switch = view.findViewById(R.id.proficiencyWisdom)
+        val CharismaProficiency: Switch = view.findViewById(R.id.proficiencyCharisma)
+
+        StrengthButton.setOnClickListener { handleButtonClick(strength, resultDisplay, StrengthProficiency, proficiencyBonus) }
+        DexterityButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay, DexterityProficiency, proficiencyBonus) }
+        ConstitutionButton.setOnClickListener { handleButtonClick(constitution, resultDisplay, ConstitutionProficiency, proficiencyBonus) }
+        IntelligenceButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, IntelligenceProficiency, proficiencyBonus) }
+        WisdomButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay, WisdomProficiency, proficiencyBonus) }
+        CharismaButton.setOnClickListener { handleButtonClick(charisma, resultDisplay, CharismaProficiency, proficiencyBonus) }
 
         return view
     }
 
-    private fun handleButtonClick(modifier: Int, resultDisplay: TextView) {
+    private fun handleButtonClick(modifier: Int, resultDisplay: TextView, proficiency: Switch, proficiencyBonus: Int) {
         var total = Random.nextInt(1,20)
+        if(proficiency.isChecked)
+            total+=proficiencyBonus
         total+=modifier
         resultDisplay.text = total.toString()
     }
