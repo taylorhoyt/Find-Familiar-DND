@@ -88,7 +88,7 @@ class SkillsInfoFragment : Fragment() {
     private fun handleButtonClick(modifier: Int, resultDisplay: TextView) {
         var total = Random.nextInt(1,20)
         total+=modifier
-        resultDisplay.text = "Result: "+total
+        resultDisplay.text = total.toString()
     }
 
     companion object {
