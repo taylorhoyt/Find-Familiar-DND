@@ -10,7 +10,7 @@
     <!--Linear layout orientation vertical-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="558dp"
         android:orientation="vertical"
         android:paddingTop="75dp">
 
@@ -31,5 +31,24 @@
             tools:listitem="@layout/weapon_list" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Result"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:fontFamily="casual"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        tools:text="0" />
 
 </LinearLayout>
