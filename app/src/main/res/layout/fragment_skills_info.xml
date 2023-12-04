@@ -52,7 +52,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyAcrobatics"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyAnimalHandling"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyArcana"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyAthletics"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyDeception"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -332,7 +332,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyHistory"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -388,7 +388,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyInsight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -444,7 +444,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyIntimidation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -500,7 +500,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyInvestigation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -556,7 +556,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyMedicine"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -612,7 +612,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyNature"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -668,7 +668,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyPerception"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -724,7 +724,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyPerformance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -780,7 +780,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyPersuasion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -836,7 +836,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyReligion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -892,7 +892,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencySleightOfHand"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -948,7 +948,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencyStealth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1004,7 +1004,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
-                        <RadioButton
+                        <Switch
                             android:id="@+id/proficiencySurvival"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
