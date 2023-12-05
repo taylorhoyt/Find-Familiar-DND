@@ -21,7 +21,7 @@ class CharactersRepository(private val charactersDao: CharactersDao,
     fun getCharacter(id: Int): Flow<Characters> = charactersDao.getCharacter(id)
 
     @WorkerThread
-    suspend fun insert(character: Characters) = charactersDao.insert(character)
+    suspend fun insert(character: Characters): Long = charactersDao.insert(character)
 
     @WorkerThread
     suspend fun insertWeapon(weapons: CharacterWeapons) = charactersDao.insert(weapons)

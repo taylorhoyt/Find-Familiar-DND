@@ -1,5 +1,6 @@
 package edu.uark.mobileprogramming.findfamiliar.NewCharacter
 
+import android.icu.text.DateFormat
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -18,6 +19,7 @@ class NewCharacterActivity : AppCompatActivity() {
     private lateinit var charName: EditText
     private lateinit var charClass: EditText
     private lateinit var charLevel: EditText
+    private var characterId: Int = -1
 
     private val newCharacterViewModel: NewCharacterViewModel by viewModels {
         NewCharacterViewModelFactory((application as FindFamiliarApplication).repository,-1)
@@ -39,15 +41,30 @@ class NewCharacterActivity : AppCompatActivity() {
             true
         }
 
+        characterId = intent.getIntExtra("character_id",-1)
+
         // Initialize with the default fragment
         if (savedInstanceState == null) {
             replaceFragment(CharacterInfoFragment())
         }
 
+        // TODO: to update each part of the character, build update functions in each fragment,
+        // TODO: and then call the update function before switching fragments
         val fab = findViewById<Button>(R.id.homeBtn)
         fab.setOnClickListener {
             CoroutineScope(SupervisorJob()).launch {
-                newCharacterViewModel.insert(Characters(null, "Name", 1, 1, "Class", 10, 1, "X", null))
+                // TODO: create new update function that takes in objects for each part
+                // TODO: so like update(character, stats, feats, weapons)
+                newCharacterViewModel.update(Characters(
+                    characterId,
+                    "name",
+                    1,
+                    1,
+                    "Class",
+                    10,
+                    1,
+                    "X",
+                    null))
             }
             setResult(RESULT_OK)
             finish()

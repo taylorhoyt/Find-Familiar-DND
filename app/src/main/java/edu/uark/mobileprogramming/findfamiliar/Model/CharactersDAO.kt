@@ -28,9 +28,9 @@ interface CharactersDao {
     @Query("SELECT * FROM characters_table WHERE character_id=:id")
     fun getCharacter(id:Int): Flow<Characters>
 
-    // insert a single character
+    // insert a single character and return character id
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(character: Characters)
+    suspend fun insert(character: Characters):Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(weapons: CharacterWeapons)
@@ -53,8 +53,9 @@ interface CharacterStatsDao {
     @Query("SELECT * FROM character_stats_table WHERE stats_id IN(:statsId)")
     fun getStatsById(statsId: Int): CharacterStats
 
+    // insert character stats and return stats id
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(characterStats: CharacterStats)
+    suspend fun insert(characterStats: CharacterStats):Long
 
     @Delete
     suspend fun delete(characterStats: CharacterStats)

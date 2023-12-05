@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.NewCharacter.NewCharacterActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 class CharacterSheetFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -24,6 +27,7 @@ class CharacterSheetFragment : Fragment() {
     private lateinit var addCharBtn: Button
     private lateinit var viewModel: CharactersViewModel
     private lateinit var repository: CharactersRepository
+    private var numberOfCharacters: Int = 0
 
     val startNewCharacterActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
@@ -31,6 +35,7 @@ class CharacterSheetFragment : Fragment() {
             Log.d("CharacterSheetFragment","Completed")
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +61,13 @@ class CharacterSheetFragment : Fragment() {
         viewModel = ViewModelProvider(this, CharactersViewModelFactory(repository)).get(CharactersViewModel::class.java)
         addCharBtn = view.findViewById(R.id.addAbilityBtn)
         addCharBtn.setOnClickListener {
-            val intent = Intent(requireContext(), NewCharacterActivity::class.java)
-            startNewCharacterActivity.launch(intent)
+            CoroutineScope(SupervisorJob()).launch {
+                viewModel.insertBlankCharacter()
+                val intent = Intent(requireContext(), NewCharacterActivity::class.java)
+                val characterId = numberOfCharacters + 1
+                intent.putExtra("character_id", characterId)
+                startNewCharacterActivity.launch(intent)
+            }
         }
 
         recyclerView = view.findViewById(R.id.recyclerviewCharacter)
@@ -72,6 +82,8 @@ class CharacterSheetFragment : Fragment() {
 
         viewModel.allCharacters.observe(viewLifecycleOwner) { characters ->
             characters.let {
+                // increments numberOfCharacters for each entry
+                ++numberOfCharacters
                 adapter.submitList(it)
             }
         }
