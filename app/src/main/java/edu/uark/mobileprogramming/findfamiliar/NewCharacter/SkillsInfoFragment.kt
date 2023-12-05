@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Switch
 import android.widget.TextView
 import edu.uark.mobileprogramming.findfamiliar.R
 import kotlin.random.Random
@@ -45,6 +46,7 @@ class SkillsInfoFragment : Fragment() {
         val wisdom:Int = 3
         val intelligence:Int = 4
         val charisma: Int = -1
+        val proficiencyBonus: Int = 3
         val resultDisplay: TextView = view.findViewById(R.id.resultView)
         val AcrobaticsButton: Button = view.findViewById(R.id.rollButtonAcrobatics)
         val AnimalHandlingButton: Button = view.findViewById(R.id.rollButtonAnimalHandling)
@@ -64,31 +66,51 @@ class SkillsInfoFragment : Fragment() {
         val StealthButton: Button = view.findViewById(R.id.rollButtonStealth)
         val SurvivalButton: Button = view.findViewById(R.id.rollButtonSurvival)
 
-        AcrobaticsButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay) }
-        AnimalHandlingButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay) }
-        ArcanaButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        DeceptionButton.setOnClickListener { handleButtonClick(charisma, resultDisplay) }
-        AthleticsButton.setOnClickListener { handleButtonClick(strength, resultDisplay) }
-        HistoryButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        InsightButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay) }
-        IntimidationButton.setOnClickListener { handleButtonClick(charisma, resultDisplay) }
-        InvestigationButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        MedicineButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        NatureButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        PerceptionButton.setOnClickListener { handleButtonClick(charisma, resultDisplay) }
-        PersuasionButton.setOnClickListener { handleButtonClick(charisma, resultDisplay) }
-        ReligionButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay) }
-        SleightOfHandButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay) }
-        StealthButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay) }
-        SurvivalButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay) }
+        val AcrobaticsProficiency: Switch = view.findViewById(R.id.proficiencyAcrobatics)
+        val AnimalHandlingProficiency: Switch = view.findViewById(R.id.proficiencyAnimalHandling)
+        val ArcanaProficiency: Switch = view.findViewById(R.id.proficiencyArcana)
+        val AthleticsProficiency: Switch = view.findViewById(R.id.proficiencyAthletics)
+        val DeceptionProficiency: Switch = view.findViewById(R.id.proficiencyDeception)
+        val HistoryProficiency: Switch = view.findViewById(R.id.proficiencyHistory)
+        val InsightProficiency: Switch = view.findViewById(R.id.proficiencyInsight)
+        val IntimidationProficiency: Switch = view.findViewById(R.id.proficiencyIntimidation)
+        val InvestigationProficiency: Switch = view.findViewById(R.id.proficiencyInvestigation)
+        val MedicineProficiency: Switch = view.findViewById(R.id.proficiencyMedicine)
+        val NatureProficiency: Switch = view.findViewById(R.id.proficiencyNature)
+        val PerceptionProficiency: Switch = view.findViewById(R.id.proficiencyPerception)
+        val PersuasionProficiency: Switch = view.findViewById(R.id.proficiencyPersuasion)
+        val ReligionProficiency: Switch = view.findViewById(R.id.proficiencyReligion)
+        val SleightOfHandProficiency: Switch = view.findViewById(R.id.proficiencySleightOfHand)
+        val StealthProficiency: Switch = view.findViewById(R.id.proficiencyStealth)
+        val SurvivalProficiency: Switch = view.findViewById(R.id.proficiencySurvival)
+
+        AcrobaticsButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay, AcrobaticsProficiency, proficiencyBonus) }
+        AnimalHandlingButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay, AnimalHandlingProficiency, proficiencyBonus) }
+        ArcanaButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, ArcanaProficiency, proficiencyBonus) }
+        DeceptionButton.setOnClickListener { handleButtonClick(charisma, resultDisplay, DeceptionProficiency, proficiencyBonus) }
+        AthleticsButton.setOnClickListener { handleButtonClick(strength, resultDisplay, AthleticsProficiency, proficiencyBonus) }
+        HistoryButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, HistoryProficiency, proficiencyBonus) }
+        InsightButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay, InsightProficiency, proficiencyBonus) }
+        IntimidationButton.setOnClickListener { handleButtonClick(charisma, resultDisplay, IntimidationProficiency, proficiencyBonus) }
+        InvestigationButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, InvestigationProficiency, proficiencyBonus) }
+        MedicineButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, MedicineProficiency, proficiencyBonus) }
+        NatureButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, NatureProficiency, proficiencyBonus) }
+        PerceptionButton.setOnClickListener { handleButtonClick(charisma, resultDisplay, PerceptionProficiency, proficiencyBonus) }
+        PersuasionButton.setOnClickListener { handleButtonClick(charisma, resultDisplay, PersuasionProficiency, proficiencyBonus) }
+        ReligionButton.setOnClickListener { handleButtonClick(intelligence, resultDisplay, ReligionProficiency, proficiencyBonus) }
+        SleightOfHandButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay, SleightOfHandProficiency, proficiencyBonus) }
+        StealthButton.setOnClickListener { handleButtonClick(dexterity, resultDisplay, StealthProficiency, proficiencyBonus) }
+        SurvivalButton.setOnClickListener { handleButtonClick(wisdom, resultDisplay, SurvivalProficiency, proficiencyBonus) }
 
         return view
     }
 
-    private fun handleButtonClick(modifier: Int, resultDisplay: TextView) {
+    private fun handleButtonClick(modifier: Int, resultDisplay: TextView, proficiency: Switch, proficiencyBonus: Int) {
         var total = Random.nextInt(1,20)
+        if(proficiency.isChecked)
+            total+=proficiencyBonus
         total+=modifier
-        resultDisplay.text = "Result: "+total
+        resultDisplay.text = total.toString()
     }
 
     companion object {
