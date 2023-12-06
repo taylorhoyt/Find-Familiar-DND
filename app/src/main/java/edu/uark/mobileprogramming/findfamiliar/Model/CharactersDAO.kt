@@ -28,6 +28,9 @@ interface CharactersDao {
     @Query("SELECT * FROM characters_table WHERE character_id=:id")
     fun getCharacter(id:Int): Flow<Characters>
 
+    @Query("SELECT * FROM characters_table WHERE character_id = :id")
+    suspend fun getCharacterById(id: Int): Characters?
+
     // insert a single character and return character id
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(character: Characters):Long

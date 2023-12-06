@@ -1,19 +1,24 @@
 package edu.uark.mobileprogramming.findfamiliar.NewCharacter
 
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterFeatsExtras
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterStats
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterWeapons
 import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NewCharacterViewModel(private val repository: CharactersRepository, private val id:Int): ViewModel() {
-
-    var currentCharacter: LiveData<Characters> = repository.getCharacter(id).asLiveData()
 
     var currentCharacterStats: LiveData<CharacterStats> = repository.loadAllStatsForCharacter(id).asLiveData()
 
@@ -21,10 +26,20 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
 
     var allCharacterFeats: LiveData<List<CharacterFeatsExtras>> = repository.getCharacterFeats().asLiveData()
 
-    fun updateId(id:Int){
-        currentCharacter = repository.getCharacter(id).asLiveData()
-        currentCharacterStats = repository.loadAllStatsForCharacter(id).asLiveData()
+    private val _currentCharacter = MutableLiveData<Characters>()
+    val currentCharacter: LiveData<Characters>
+        get() = _currentCharacter
+
+
+    fun loadCharacterById(characterId: Int){
+        viewModelScope.launch {
+            val character = repository.getCharacterById(characterId)
+            character?.let {
+                _currentCharacter.value = it
+            }
+        }
     }
+
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way

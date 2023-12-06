@@ -1,28 +1,34 @@
 package edu.uark.mobileprogramming.findfamiliar.NewCharacter
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import edu.uark.mobileprogramming.findfamiliar.FindFamiliarApplication
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterStats
 import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import edu.uark.mobileprogramming.findfamiliar.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_CHARACTER_ID = "character_id"
 
 /**
  * A simple [Fragment] subclass.
  * Use the [CharacterInfoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CharacterInfoFragment(private var isNewCharacter: Boolean, private var currentCharacterId: Int) : Fragment() {
+class CharacterInfoFragment() : Fragment() {
 
     private lateinit var view: View
     private lateinit var nameEditText: EditText
@@ -37,21 +43,22 @@ class CharacterInfoFragment(private var isNewCharacter: Boolean, private var cur
     private lateinit var charismaEditText: EditText
     private lateinit var addBtn: Button
     private lateinit var subBtn: Button
-    private lateinit var healthTextView: TextView
+    private lateinit var healthEditText: EditText
+    private var currentCharacter: Characters = Characters(null, null, null, null, null, null, null, null, null)
+    private var currentCharacterId: Int = -1
 
-    private lateinit var currentCharacter: Characters
-
+    private val newCharacterViewModel: NewCharacterViewModel by lazy {
+        (requireActivity() as NewCharacterActivity).newCharacterViewModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity as NewCharacterActivity)
-        arguments?.let {
-        }
+        //(activity as NewCharacterActivity)
     }
 
     override fun onStop(){
         super.onStop()
-        (activity as NewCharacterActivity).updateCharacterInfo(getCharacterInfoFromView())
+        saveCharacter()
     }
 
     override fun onCreateView(
@@ -70,40 +77,52 @@ class CharacterInfoFragment(private var isNewCharacter: Boolean, private var cur
         wisdomEditText = view.findViewById(R.id.wisdomEdit)
         constitutionEditText = view.findViewById(R.id.constitutionEdit)
         charismaEditText = view.findViewById(R.id.charismaEdit)
-        healthTextView = view.findViewById(R.id.hpEdit)
+        healthEditText = view.findViewById(R.id.hpEdit)
         addBtn = view.findViewById(R.id.addHealthButton)
         subBtn = view.findViewById(R.id.subtractHealthButton)
         addBtn.setOnClickListener {
-            val currentValue = healthTextView.text.toString().toIntOrNull() ?: 0
+            val currentValue = healthEditText.text.toString().toIntOrNull() ?: 0
             val newValue = currentValue + 1
-            healthTextView.text = newValue.toString()
+            newValue.let{healthEditText.setText(it.toString())}
+
         }
         subBtn.setOnClickListener {
-            val currentValue = healthTextView.text.toString().toIntOrNull() ?: 0
+            val currentValue = healthEditText.text.toString().toIntOrNull() ?: 0
             val newValue = currentValue - 1
             if (currentValue > 0) {
-                healthTextView.text = newValue.toString()
+                newValue.let{healthEditText.setText(it.toString())}
             }
         }
-        if(!isNewCharacter) {
-            (activity as NewCharacterActivity).currentLiveCharacter.observe(viewLifecycleOwner) { character ->
-                currentCharacter = character
-                updateView()
-            }
+
+
+        currentCharacterId = arguments?.getInt(ARG_CHARACTER_ID, -1)!!
+        Log.d("CHAR INFO FRAG", "Character ID: $currentCharacterId")
+        newCharacterViewModel.loadCharacterById(currentCharacterId)
+
+        newCharacterViewModel.currentCharacter.observe(viewLifecycleOwner) {
+            character ->
+            Log.d("YourFragment", "Current Character: $character")
+            currentCharacter = character
+            updateView()
         }
         return view
     }
 
-    //currentCharacter = (activity as NewCharacterActivity).getCharacterInfo()
+    private fun saveCharacter(){
+        Log.d("CHARACTER INFO DEAD", "updating")
+        CoroutineScope(SupervisorJob()).launch {
+            newCharacterViewModel.update(getCharacterInfoFromView())
+        }
+    }
 
     private fun getCharacterInfoFromView(): Characters{
         return Characters(
-            currentCharacter.characterId,
+            currentCharacterId,
             nameEditText.text.toString(),
-            healthTextView.text.toString().toIntOrNull(),
-            armorClassEditText.toString().toIntOrNull(),
-            classEditText.toString(),
-            levelEditText.toString().toIntOrNull(),
+            healthEditText.text.toString().toIntOrNull(),
+            armorClassEditText.text.toString().toIntOrNull(),
+            classEditText.text.toString(),
+            levelEditText.text.toString().toIntOrNull(),
             currentCharacter.proficiencyBonus,
             currentCharacter.proficiencies,
             currentCharacter.statsId
@@ -113,9 +132,9 @@ class CharacterInfoFragment(private var isNewCharacter: Boolean, private var cur
     private fun updateView(){
         currentCharacter.name?.let{nameEditText.setText(it)}
         currentCharacter.className?.let{ classEditText.setText(it)}
-        currentCharacter.level?.let { levelEditText.setText(it) }
-        currentCharacter.armor?.let { armorClassEditText.setText(it) }
-        currentCharacter.health?.let { healthTextView.setText(it) }
+        currentCharacter.level?.let { levelEditText.setText(it.toString()) }
+        currentCharacter.armor?.let { armorClassEditText.setText(it.toString()) }
+        currentCharacter.health?.let { healthEditText.setText(it.toString() ) }
     }
 
     private fun getCharacterStatsFromView(): CharacterStats {
@@ -132,11 +151,10 @@ class CharacterInfoFragment(private var isNewCharacter: Boolean, private var cur
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CharacterInfoFragment(true, -1).apply {
+        fun newInstance(characterId: Int) =
+            CharacterInfoFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ARG_CHARACTER_ID, characterId)
                 }
             }
     }

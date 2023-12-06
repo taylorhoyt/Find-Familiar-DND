@@ -18,6 +18,10 @@ class CharactersRepository(private val charactersDao: CharactersDao,
 
     fun loadAllByIds(characterIds: IntArray): List<Characters> = charactersDao.loadAllByIds(characterIds)
 
+    suspend fun getCharacterById(characterId: Int): Characters? {
+        return charactersDao.getCharacterById(characterId)
+    }
+
     fun getCharacter(id: Int): Flow<Characters> = charactersDao.getCharacter(id)
 
     @WorkerThread

@@ -13,19 +13,19 @@ import edu.uark.mobileprogramming.findfamiliar.FindFamiliarApplication
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterStats
 import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NewCharacterActivity : AppCompatActivity() {
 
     private var characterId: Int = -1
-    lateinit var currentLiveCharacter: LiveData<Characters>
-    private lateinit var currentCharacter: Characters
-    private lateinit var currentCharacterStats: CharacterStats
-    private var isNewCharacter = true
+    private var currentCharacter: Characters = Characters(null, null, null, null, null, null, null, null, null)
+    private var currentCharacterStats: CharacterStats = CharacterStats(null, null, null, null, null, null, null)
 
-    private val newCharacterViewModel: NewCharacterViewModel by viewModels {
-        NewCharacterViewModelFactory((application as FindFamiliarApplication).repository,-1)
+    val newCharacterViewModel: NewCharacterViewModel by viewModels {
+        NewCharacterViewModelFactory((application as FindFamiliarApplication).repository,characterId)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,11 @@ class NewCharacterActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.person -> replaceFragment(CharacterInfoFragment(isNewCharacter, characterId))
+                R.id.person -> replaceFragment(CharacterInfoFragment().apply{
+                    arguments = Bundle().apply {
+                        putInt("character_id", characterId)
+                    }
+                })
                 R.id.weapon -> replaceFragment(WeaponSheetFragment())
                 R.id.skills -> replaceFragment(SkillsInfoFragment())
                 R.id.ability -> replaceFragment(AbilitySheetFragment())
@@ -44,30 +48,20 @@ class NewCharacterActivity : AppCompatActivity() {
             true
         }
 
-        // Initialize with the default fragment
-        if (savedInstanceState == null) {
-            replaceFragment(CharacterInfoFragment(isNewCharacter, characterId))
-        }
-
         characterId = intent.getIntExtra("character_id",-1)
-        Log.d("NEW CHAR ACTIVITY ID", characterId.toString() )
-        newCharacterViewModel.updateId(characterId)
-        newCharacterViewModel.currentCharacter.observe(this) { character ->
-            currentCharacter = character
-            currentLiveCharacter = newCharacterViewModel.currentCharacter
+        Log.d("NEW CHAR ACTIVITY ID", characterId.toString())
+        if (savedInstanceState == null) {
+            replaceFragment(CharacterInfoFragment().apply{
+                arguments = Bundle().apply {
+                    putInt("character_id", characterId)
+                }
+            })
         }
 
-        /*TODO: to update the database, the fragment can call getActivity() in onStop(), and then
-        *  update the character.*/
-        // TODO: to update each part of the character, build update functions in each fragment,
-        // TODO: and then call the update function before switching fragments
         val fab = findViewById<Button>(R.id.homeBtn)
         fab.setOnClickListener {
             CoroutineScope(SupervisorJob()).launch {
-                // TODO: create new update function that takes in objects for each part
-                // TODO: so like update(character, stats, feats, weapons)
-                newCharacterViewModel.update(currentCharacter)
-                //newCharacterViewModel.updateStats(currentCharacterStats)
+
             }
             setResult(RESULT_OK)
             finish()
@@ -84,9 +78,6 @@ class NewCharacterActivity : AppCompatActivity() {
         currentCharacter = character
     }
 
-    fun getCharacterInfo(): Characters{
-        return currentCharacter
-    }
 
     fun updateCharacterSkills(characterStats: CharacterStats){
         currentCharacterStats = characterStats

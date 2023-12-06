@@ -15,11 +15,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.NewCharacter.NewCharacterActivity
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CharacterSheetFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -58,13 +61,23 @@ class CharacterSheetFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_character_sheet, container, false)
-        viewModel = ViewModelProvider(this, CharactersViewModelFactory(repository)).get(CharactersViewModel::class.java)
+        viewModel = ViewModelProvider(this,
+            CharactersViewModel.CharactersViewModelFactory(repository)
+        ).get(CharactersViewModel::class.java)
         addCharBtn = view.findViewById(R.id.addAbilityBtn)
+        // sets on click for add character
+        // when add character is called, it creates an empty character.
         addCharBtn.setOnClickListener {
+            var characterId = -1
             CoroutineScope(SupervisorJob()).launch {
-                viewModel.insertBlankCharacter()
+                 val id = withContext(Dispatchers.IO){
+                    viewModel.insertBlankCharacter()
+                }.getOrDefault(-1)
+                characterId = id.toInt()
+
+            }.invokeOnCompletion {
+                numberOfCharacters = characterId
                 val intent = Intent(requireContext(), NewCharacterActivity::class.java)
-                val characterId = numberOfCharacters
                 intent.putExtra("character_id", characterId)
                 startNewCharacterActivity.launch(intent)
             }
@@ -72,9 +85,10 @@ class CharacterSheetFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerviewCharacter)
         adapter = CharacterListAdapter {
-            it.name?.let { it -> Log.d("Character Sheet Fragment", it) }
+            clickedCharacter ->
+            clickedCharacter.name?.let { it -> Log.d("Character Sheet Fragment", it) }
             val intent = Intent(requireContext(), NewCharacterActivity::class.java)
-            intent.putExtra("EXTRA_ID", it.characterId)
+            intent.putExtra("character_id", clickedCharacter.characterId)
             startNewCharacterActivity.launch(intent)
         }
         recyclerView.adapter = adapter
