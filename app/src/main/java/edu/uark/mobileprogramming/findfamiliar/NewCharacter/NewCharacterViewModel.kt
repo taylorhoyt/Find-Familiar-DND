@@ -20,8 +20,6 @@ import kotlinx.coroutines.withContext
 
 class NewCharacterViewModel(private val repository: CharactersRepository, private val id:Int): ViewModel() {
 
-    var currentCharacterStats: LiveData<CharacterStats> = repository.loadAllStatsForCharacter(id).asLiveData()
-
     var allCharacterWeapons: LiveData<List<CharacterWeapons>> = repository.getCharacterWeapons().asLiveData()
 
     var allCharacterFeats: LiveData<List<CharacterFeatsExtras>> = repository.getCharacterFeats().asLiveData()
@@ -30,12 +28,25 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
     val currentCharacter: LiveData<Characters>
         get() = _currentCharacter
 
+    private val _currentCharacterStats = MutableLiveData<CharacterStats>()
+    val currentCharacterStats: LiveData<CharacterStats>
+        get() = _currentCharacterStats
+
 
     fun loadCharacterById(characterId: Int){
         viewModelScope.launch {
             val character = repository.getCharacterById(characterId)
             character?.let {
                 _currentCharacter.value = it
+            }
+        }
+    }
+
+    fun loadStatsById(statsId: Int){
+        viewModelScope.launch {
+            val characterStats = repository.getStatsById(statsId)
+            characterStats?.let {
+                _currentCharacterStats.value = it
             }
         }
     }

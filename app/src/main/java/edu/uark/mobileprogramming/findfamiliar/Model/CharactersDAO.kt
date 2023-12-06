@@ -51,10 +51,9 @@ interface CharactersDao {
 
 @Dao
 interface CharacterStatsDao {
-
     // get character stats by stats id
     @Query("SELECT * FROM character_stats_table WHERE stats_id IN(:statsId)")
-    fun getStatsById(statsId: Int): Flow<CharacterStats>
+    suspend fun getStatsById(statsId: Int): CharacterStats?
 
     // insert character stats and return stats id
     @Insert(onConflict = OnConflictStrategy.IGNORE)

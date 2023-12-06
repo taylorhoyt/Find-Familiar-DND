@@ -45,7 +45,9 @@ class CharacterInfoFragment() : Fragment() {
     private lateinit var subBtn: Button
     private lateinit var healthEditText: EditText
     private var currentCharacter: Characters = Characters(null, null, null, null, null, null, null, null, null)
+    private var currentCharacterStats: CharacterStats = CharacterStats(null, null, null, null, null, null, null)
     private var currentCharacterId: Int = -1
+    private var currentCharacterStatsId: Int = -1
 
     private val newCharacterViewModel: NewCharacterViewModel by lazy {
         (requireActivity() as NewCharacterActivity).newCharacterViewModel
@@ -101,9 +103,17 @@ class CharacterInfoFragment() : Fragment() {
 
         newCharacterViewModel.currentCharacter.observe(viewLifecycleOwner) {
             character ->
-            Log.d("YourFragment", "Current Character: $character")
+            Log.d("Char Info Frag", "Current Character: $character")
             currentCharacter = character
             updateView()
+        }
+
+        newCharacterViewModel.loadStatsById(currentCharacterId)
+        newCharacterViewModel.currentCharacterStats.observe(viewLifecycleOwner) {
+            stats ->
+            Log.d("Char Info Frag", "Current Stats: $stats")
+            currentCharacterStats = stats
+            updateStatsView()
         }
         return view
     }
@@ -112,6 +122,7 @@ class CharacterInfoFragment() : Fragment() {
         Log.d("CHARACTER INFO DEAD", "updating")
         CoroutineScope(SupervisorJob()).launch {
             newCharacterViewModel.update(getCharacterInfoFromView())
+            newCharacterViewModel.updateStats(getCharacterStatsFromView())
         }
     }
 
@@ -137,15 +148,24 @@ class CharacterInfoFragment() : Fragment() {
         currentCharacter.health?.let { healthEditText.setText(it.toString() ) }
     }
 
+    private fun updateStatsView(){
+        currentCharacterStats.strength?.let {strengthEditText.setText((it.toString()))}
+        currentCharacterStats.constitution?.let {constitutionEditText.setText((it.toString()))}
+        currentCharacterStats.wisdom?.let {wisdomEditText.setText((it.toString()))}
+        currentCharacterStats.dexterity?.let {dexterityEditText.setText((it.toString()))}
+        currentCharacterStats.charisma?.let {charismaEditText.setText((it.toString()))}
+        currentCharacterStats.intelligence?.let {intelligenceEditText.setText((it.toString()))}
+    }
+
     private fun getCharacterStatsFromView(): CharacterStats {
         return CharacterStats(
             currentCharacter.statsId,
-            strengthEditText.toString().toIntOrNull(),
-            constitutionEditText.toString().toIntOrNull(),
-            wisdomEditText.toString().toIntOrNull(),
-            dexterityEditText.toString().toIntOrNull(),
-            charismaEditText.toString().toIntOrNull(),
-            intelligenceEditText.toString().toIntOrNull()
+            strengthEditText.text.toString().toIntOrNull(),
+            constitutionEditText.text.toString().toIntOrNull(),
+            wisdomEditText.text.toString().toIntOrNull(),
+            dexterityEditText.text.toString().toIntOrNull(),
+            charismaEditText.text.toString().toIntOrNull(),
+            intelligenceEditText.text.toString().toIntOrNull()
         )
     }
 

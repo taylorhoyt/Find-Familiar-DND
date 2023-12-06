@@ -40,7 +40,10 @@ class CharactersRepository(private val charactersDao: CharactersDao,
     suspend fun update(character: Characters) = charactersDao.update(character)
 
     // CharacterStatsDao --------------------------------------------------------------------------
-    fun loadAllStatsForCharacter(statsId: Int): Flow<CharacterStats> = characterStatsDao.getStatsById(statsId)
+
+    suspend fun getStatsById(statsId: Int): CharacterStats? {
+        return characterStatsDao.getStatsById(statsId)
+    }
 
     @WorkerThread
     suspend fun insert(characterStats: CharacterStats) = characterStatsDao.insert(characterStats)
