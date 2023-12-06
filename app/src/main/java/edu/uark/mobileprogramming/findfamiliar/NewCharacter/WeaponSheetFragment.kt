@@ -8,9 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -22,12 +21,13 @@ import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.R
 import edu.uark.mobileprogramming.findfamiliar.WeaponListAdapter
 
-class WeaponSheetFragment : Fragment() {
+class WeaponSheetFragment : Fragment(), WeaponListAdapter.OnButtonClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: WeaponListAdapter
     private lateinit var addBtn: Button
     private lateinit var viewModel: NewCharacterViewModel
     private lateinit var repository: CharactersRepository
+    private lateinit var resultView: TextView
 
     val startWeaponActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
@@ -60,6 +60,7 @@ class WeaponSheetFragment : Fragment() {
         viewModel = ViewModelProvider(this, NewCharacterViewModelFactory(repository, -1)).get(
             NewCharacterViewModel::class.java)
         addBtn = view.findViewById(R.id.addAbilityBtn)
+        resultView = view.findViewById(R.id.resultView)
         addBtn.setOnClickListener {
             val intent = Intent(requireContext(), WeaponActivity::class.java)
             startWeaponActivity.launch(intent)
@@ -73,6 +74,7 @@ class WeaponSheetFragment : Fragment() {
             intent.putExtra("EXTRA_ID", it.weaponId)
             startWeaponActivity.launch(intent)
         }
+        adapter.setOnButtonClickListener(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -82,6 +84,11 @@ class WeaponSheetFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onButtonClick(item: Int) {
+        // Handle the button click, update the TextView, etc.
+        resultView.text = item.toString()
     }
 
     companion object {

@@ -106,7 +106,7 @@ class SkillsInfoFragment : Fragment() {
     }
 
     private fun handleButtonClick(modifier: Int, resultDisplay: TextView, proficiency: Switch, proficiencyBonus: Int) {
-        var total = Random.nextInt(1,20)
+        var total = Random.nextInt(1,21)
         if(proficiency.isChecked)
             total+=proficiencyBonus
         total+=modifier
