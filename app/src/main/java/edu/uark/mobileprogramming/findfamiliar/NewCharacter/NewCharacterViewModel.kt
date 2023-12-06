@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterFeatsExtras
+import edu.uark.mobileprogramming.findfamiliar.Model.CharacterStats
 import edu.uark.mobileprogramming.findfamiliar.Model.CharacterWeapons
 import edu.uark.mobileprogramming.findfamiliar.Model.Characters
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
@@ -12,14 +13,17 @@ import kotlinx.coroutines.coroutineScope
 
 class NewCharacterViewModel(private val repository: CharactersRepository, private val id:Int): ViewModel() {
 
-    var curTask: LiveData<Characters> = repository.getCharacter(id).asLiveData()
+    var currentCharacter: LiveData<Characters> = repository.getCharacter(id).asLiveData()
 
-    val allCharacterWeapons: LiveData<List<CharacterWeapons>> = repository.getCharacterWeapons().asLiveData()
+    var currentCharacterStats: LiveData<CharacterStats> = repository.loadAllStatsForCharacter(id).asLiveData()
 
-    val allCharacterFeats: LiveData<List<CharacterFeatsExtras>> = repository.getCharacterFeats().asLiveData()
+    var allCharacterWeapons: LiveData<List<CharacterWeapons>> = repository.getCharacterWeapons().asLiveData()
+
+    var allCharacterFeats: LiveData<List<CharacterFeatsExtras>> = repository.getCharacterFeats().asLiveData()
 
     fun updateId(id:Int){
-        curTask = repository.getCharacter(id).asLiveData()
+        currentCharacter = repository.getCharacter(id).asLiveData()
+        currentCharacterStats = repository.loadAllStatsForCharacter(id).asLiveData()
     }
 
     /**
@@ -49,6 +53,12 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
     suspend fun update(character: Characters) {
         coroutineScope {
             repository.update(character)
+        }
+    }
+
+    suspend fun updateStats(characterStats: CharacterStats){
+        coroutineScope {
+            repository.update(characterStats)
         }
     }
 }

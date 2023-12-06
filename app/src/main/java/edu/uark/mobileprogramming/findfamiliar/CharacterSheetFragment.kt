@@ -64,7 +64,7 @@ class CharacterSheetFragment : Fragment() {
             CoroutineScope(SupervisorJob()).launch {
                 viewModel.insertBlankCharacter()
                 val intent = Intent(requireContext(), NewCharacterActivity::class.java)
-                val characterId = numberOfCharacters + 1
+                val characterId = numberOfCharacters
                 intent.putExtra("character_id", characterId)
                 startNewCharacterActivity.launch(intent)
             }
