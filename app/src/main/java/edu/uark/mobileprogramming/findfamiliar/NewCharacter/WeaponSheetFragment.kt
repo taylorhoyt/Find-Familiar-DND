@@ -21,6 +21,8 @@ import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.R
 import edu.uark.mobileprogramming.findfamiliar.WeaponListAdapter
 
+private const val ARG_CHARACTER_ID = "character_id"
+
 class WeaponSheetFragment : Fragment(), WeaponListAdapter.OnButtonClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: WeaponListAdapter
@@ -28,6 +30,11 @@ class WeaponSheetFragment : Fragment(), WeaponListAdapter.OnButtonClickListener 
     private lateinit var viewModel: NewCharacterViewModel
     private lateinit var repository: CharactersRepository
     private lateinit var resultView: TextView
+    private var currentCharacterId: Int = -1
+
+    private val newCharacterViewModel: NewCharacterViewModel by lazy {
+        (requireActivity() as NewCharacterActivity).newCharacterViewModel
+    }
 
     val startWeaponActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
@@ -59,10 +66,15 @@ class WeaponSheetFragment : Fragment(), WeaponListAdapter.OnButtonClickListener 
         val view = inflater.inflate(R.layout.fragment_weapon_sheet, container, false)
         viewModel = ViewModelProvider(this, NewCharacterViewModelFactory(repository, -1)).get(
             NewCharacterViewModel::class.java)
+
+        currentCharacterId = (activity as NewCharacterActivity).characterId
+        Log.d("WEAPON FRAG", currentCharacterId.toString())
+
         addBtn = view.findViewById(R.id.addAbilityBtn)
         resultView = view.findViewById(R.id.resultView)
         addBtn.setOnClickListener {
             val intent = Intent(requireContext(), WeaponActivity::class.java)
+            intent.putExtra("character_id", currentCharacterId)
             startWeaponActivity.launch(intent)
         }
 
@@ -70,8 +82,8 @@ class WeaponSheetFragment : Fragment(), WeaponListAdapter.OnButtonClickListener 
         adapter = WeaponListAdapter {
             it.weaponName?.let { it -> Log.d("Weapon Sheet Fragment", it) }
             val intent = Intent(requireContext(), WeaponActivity::class.java)
-            //TODO: This may need to be characterId
-            intent.putExtra("EXTRA_ID", it.weaponId)
+            intent.putExtra("weapon_id", it.weaponId)
+            intent.putExtra("character_id", currentCharacterId)
             startWeaponActivity.launch(intent)
         }
         adapter.setOnButtonClickListener(this)
@@ -93,9 +105,10 @@ class WeaponSheetFragment : Fragment(), WeaponListAdapter.OnButtonClickListener 
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(characterId: Int) =
             WeaponSheetFragment().apply {
                 arguments = Bundle().apply {
+                    putInt(ARG_CHARACTER_ID, characterId)
                 }
             }
     }

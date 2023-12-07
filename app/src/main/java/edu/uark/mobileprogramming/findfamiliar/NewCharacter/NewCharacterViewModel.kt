@@ -32,6 +32,13 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
     val currentCharacterStats: LiveData<CharacterStats>
         get() = _currentCharacterStats
 
+    private val _currentAbilities = MutableLiveData<CharacterFeatsExtras>()
+    val currentAbilities: LiveData<CharacterFeatsExtras>
+        get() = _currentAbilities
+
+    private val _currentWeapon = MutableLiveData<CharacterWeapons>()
+    val currentWeapon: LiveData<CharacterWeapons>
+        get() = _currentWeapon
 
     fun loadCharacterById(characterId: Int){
         viewModelScope.launch {
@@ -47,6 +54,24 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
             val characterStats = repository.getStatsById(statsId)
             characterStats?.let {
                 _currentCharacterStats.value = it
+            }
+        }
+    }
+
+    fun loadAbilityById(abilityId: Int){
+        viewModelScope.launch {
+            val abilities = repository.getAbilityById(abilityId)
+            abilities?.let {
+                _currentAbilities.value = it
+            }
+        }
+    }
+
+    fun loadWeaponById(weaponId: Int){
+        viewModelScope.launch {
+            val weapon = repository.getWeaponById(weaponId)
+            weapon?.let {
+                _currentWeapon.value = it
             }
         }
     }
@@ -85,6 +110,18 @@ class NewCharacterViewModel(private val repository: CharactersRepository, privat
     suspend fun updateStats(characterStats: CharacterStats){
         coroutineScope {
             repository.update(characterStats)
+        }
+    }
+
+    suspend fun updateAbility(characterFeatsExtras: CharacterFeatsExtras){
+        coroutineScope {
+            repository.update(characterFeatsExtras)
+        }
+    }
+
+    suspend fun updateWeapon(characterWeapons: CharacterWeapons){
+        coroutineScope {
+            repository.update(characterWeapons)
         }
     }
 }

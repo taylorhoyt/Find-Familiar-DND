@@ -79,7 +79,7 @@ interface CharacterFeatsExtrasDao {
 
     // get one feat/extra by id
     @Query("SELECT * FROM character_feats_extras_table WHERE feats_id IN(:featsId)")
-    fun getFeatById(featsId: Int): CharacterFeatsExtras
+    suspend fun getAbilityById(featsId: Int): CharacterFeatsExtras?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(characterFeatsExtras: CharacterFeatsExtras)
@@ -104,7 +104,7 @@ interface CharacterWeaponsDao {
 
     // get a single weapon by id
     @Query("SELECT * FROM character_weapons_table WHERE weapons_id IN(:weaponId)")
-    fun getWeaponById(weaponId: Int): CharacterWeapons
+    suspend fun getWeaponById(weaponId: Int): CharacterWeapons?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(characterWeapons: CharacterWeapons)

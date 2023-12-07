@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 
 class NewCharacterActivity : AppCompatActivity() {
 
-    private var characterId: Int = -1
+    var characterId: Int = -1
     private var currentCharacter: Characters = Characters(null, null, null, null, null, null, null, null, null)
     private var currentCharacterStats: CharacterStats = CharacterStats(null, null, null, null, null, null, null)
 
@@ -40,9 +40,17 @@ class NewCharacterActivity : AppCompatActivity() {
                         putInt("character_id", characterId)
                     }
                 })
-                R.id.weapon -> replaceFragment(WeaponSheetFragment())
+                R.id.weapon -> replaceFragment(WeaponSheetFragment().apply{
+                    arguments = Bundle().apply {
+                        putInt("character_id", characterId)
+                    }
+                })
                 R.id.skills -> replaceFragment(SkillsInfoFragment())
-                R.id.ability -> replaceFragment(AbilitySheetFragment())
+                R.id.ability -> replaceFragment(AbilitySheetFragment().apply{
+                    arguments = Bundle().apply {
+                        putInt("character_id", characterId)
+                    }
+                })
                 R.id.savingthrow -> replaceFragment(SavingThrowInfoFragment())
             }
             true

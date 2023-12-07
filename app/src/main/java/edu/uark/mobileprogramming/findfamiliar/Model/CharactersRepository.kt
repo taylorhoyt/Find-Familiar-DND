@@ -58,7 +58,9 @@ class CharactersRepository(private val charactersDao: CharactersDao,
     // CharacterFeatsExtrasDao --------------------------------------------------------------------
     fun loadAllFeatsAndExtrasForCharacter(characterId: Int): Flow<List<CharacterFeatsExtras>> = characterFeatsExtrasDao.loadAllFeatsAndExtrasForCharacter(characterId)
 
-    fun getFeatById(featsId: Int): CharacterFeatsExtras = characterFeatsExtrasDao.getFeatById(featsId)
+    suspend fun getAbilityById(abilityId: Int): CharacterFeatsExtras? {
+        return characterFeatsExtrasDao.getAbilityById(abilityId)
+    }
 
     @WorkerThread
     suspend fun insert(characterFeatsExtras: CharacterFeatsExtras) = characterFeatsExtrasDao.insert(characterFeatsExtras)
@@ -73,7 +75,9 @@ class CharactersRepository(private val charactersDao: CharactersDao,
     // CharacterWeaponsDao ------------------------------------------------------------------------
     fun loadAllWeaponsForCharacter(characterId: Int): Flow<List<CharacterWeapons>> = characterWeaponsDao.loadAllWeaponsForCharacter(characterId)
 
-    fun getWeaponById(weaponId: Int): CharacterWeapons = characterWeaponsDao.getWeaponById(weaponId)
+    suspend fun getWeaponById(weaponId: Int): CharacterWeapons? {
+        return characterWeaponsDao.getWeaponById(weaponId)
+    }
 
     @WorkerThread
     suspend fun insert(characterWeapons: CharacterWeapons) = characterWeaponsDao.insert(characterWeapons)

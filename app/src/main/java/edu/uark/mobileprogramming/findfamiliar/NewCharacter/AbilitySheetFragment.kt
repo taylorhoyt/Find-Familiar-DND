@@ -20,12 +20,19 @@ import edu.uark.mobileprogramming.findfamiliar.FindFamiliarApplication
 import edu.uark.mobileprogramming.findfamiliar.Model.CharactersRepository
 import edu.uark.mobileprogramming.findfamiliar.R
 
+private const val ARG_CHARACTER_ID = "character_id"
+
 class AbilitySheetFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AbilityListAdapter
     private lateinit var addBtn: Button
     private lateinit var viewModel: NewCharacterViewModel
     private lateinit var repository: CharactersRepository
+    private var currentCharacterId: Int = -1
+
+    private val newCharacterViewModel: NewCharacterViewModel by lazy {
+        (requireActivity() as NewCharacterActivity).newCharacterViewModel
+    }
 
     val startAbilityActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
@@ -36,8 +43,6 @@ class AbilitySheetFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,9 +62,15 @@ class AbilitySheetFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_ability_sheet, container, false)
         viewModel = ViewModelProvider(this, NewCharacterViewModelFactory(repository, -1)).get(
             NewCharacterViewModel::class.java)
+
+        //currentCharacterId = arguments?.getInt(ARG_CHARACTER_ID, -1)!!
+        currentCharacterId = (activity as NewCharacterActivity).characterId
+        Log.d("ABILITY FRAG", currentCharacterId.toString())
+
         addBtn = view.findViewById(R.id.addAbilBtn)
         addBtn.setOnClickListener {
             val intent = Intent(requireContext(), AbilityActivity::class.java)
+            intent.putExtra("character_id", currentCharacterId)
             startAbilityActivity.launch(intent)
         }
 
@@ -67,8 +78,8 @@ class AbilitySheetFragment : Fragment() {
         adapter = AbilityListAdapter {
             it.featName?.let { it -> Log.d("Ability Sheet Fragment", it) }
             val intent = Intent(requireContext(), AbilityActivity::class.java)
-            //TODO: This may need to be characterId
-            intent.putExtra("EXTRA_ID", it.featId)
+            intent.putExtra("ability_id", it.featId)
+            intent.putExtra("character_id", currentCharacterId)
             startAbilityActivity.launch(intent)
         }
         recyclerView.adapter = adapter
@@ -82,11 +93,14 @@ class AbilitySheetFragment : Fragment() {
         return view
     }
 
+
+
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(characterId: Int) =
             AbilitySheetFragment().apply {
                 arguments = Bundle().apply {
+                    putInt(ARG_CHARACTER_ID, characterId)
                 }
             }
     }
